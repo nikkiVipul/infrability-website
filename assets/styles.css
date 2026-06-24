@@ -212,7 +212,50 @@ section{padding:clamp(60px,7vw,110px) 0;position:relative}
 .hero-chips span,.feat span{font-size:.73rem;color:var(--ink-soft);font-family:'JetBrains Mono';
   padding:5px 11px;border:1px solid var(--line);border-radius:999px;background:var(--glass)}
 
-/* ---------- AIVortex governance console (hero signature) ---------- */
+/* ---------- two-column hero ---------- */
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;
+  gap:clamp(28px,5vw,64px);align-items:center;max-width:1180px;margin:0 auto}
+.hero-copy{max-width:none;margin:0;text-align:left}
+.hero-copy p.sub{margin-left:0;max-width:54ch}
+.hero-copy .hero-cta{justify-content:flex-start}
+@media(max-width:880px){
+  .hero-grid{grid-template-columns:1fr;gap:30px}
+  .orb-stage{order:-1;max-width:320px;margin:0 auto}
+  .hero-copy{text-align:center}
+  .hero-copy p.sub{margin-left:auto;margin-right:auto}
+  .hero-copy .hero-cta{justify-content:center}
+}
+
+/* ---------- orb stage (reuses .ringz/.disc/.mark from .il-visual) ---------- */
+.orb-stage{position:relative;aspect-ratio:1;display:grid;place-items:center;width:100%;max-width:480px;
+  margin-left:auto;animation:orbFloat 8s ease-in-out infinite;
+  background-image:var(--orb-img);background-size:contain;background-position:center;background-repeat:no-repeat}
+.orb-stage .ringz{position:absolute;border-radius:50%;border:1px solid var(--hair)}
+.orb-stage .ringz.a{width:78%;height:78%}
+.orb-stage .ringz.b{width:100%;height:100%;border-style:dashed;border-color:rgba(var(--azure-rgb),.25);
+  animation:orbSpin 40s linear infinite}
+.orb-stage .disc{position:absolute;width:62%;height:62%;border-radius:50%;
+  background:radial-gradient(circle at 50% 40%,rgba(var(--cyan-rgb),.30),rgba(var(--violet-rgb),.12) 60%,transparent 72%);
+  animation:orbBreath 6s ease-in-out infinite}
+.orb-stage .mark{position:relative;z-index:2;width:38%}
+.orb-stage .orb-glow{position:absolute;width:120%;height:120%;border-radius:50%;
+  background:conic-gradient(from 0deg,rgba(var(--cyan-rgb),.0),rgba(var(--cyan-rgb),.22),rgba(var(--violet-rgb),.18),rgba(var(--azure-rgb),.0));
+  filter:blur(28px);animation:orbSpin 18s linear infinite}
+
+@keyframes orbSpin{to{transform:rotate(360deg)}}
+@keyframes orbBreath{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.05);opacity:1}}
+@keyframes orbFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+@media(prefers-reduced-motion:reduce){
+  .orb-stage,.orb-stage .ringz.b,.orb-stage .disc,.orb-stage .orb-glow{animation:none}
+}
+
+/* orb image enable (generated orbs exist) */
+:root{--orb-img:url('img/hero-orb-light.webp')}
+[data-theme="dark"]{--orb-img:url('img/hero-orb-dark.webp')}
+.orb-stage .ringz,.orb-stage .disc,.orb-stage .mark{opacity:0}
+
+/* ---------- AIVortex governance console ---------- */
 .console-wrap{position:relative;z-index:2;max-width:1000px;margin:54px auto 0}
 .console{position:relative;border-radius:18px;border:1px solid var(--line);
   background:var(--console-bg);
@@ -507,12 +550,11 @@ footer{border-top:1px solid var(--line);padding:54px 0 36px;margin-top:36px;
 @keyframes bootUp{from{opacity:0;transform:translateY(30px);filter:blur(9px)}
   to{opacity:1;transform:none;filter:none}}
 .hero-inner .badge,.hero-inner h1,.hero-inner .sub,
-.hero-inner .hero-cta,.hero-inner .hero-chips,.console-wrap{
+.hero-inner .hero-cta,.console-wrap{
   animation:bootUp .95s cubic-bezier(.22,.61,.36,1) both}
 .hero-inner h1{animation-delay:.07s}
 .hero-inner .sub{animation-delay:.16s}
 .hero-inner .hero-cta{animation-delay:.26s}
-.hero-inner .hero-chips{animation-delay:.34s}
 .console-wrap{animation-delay:.46s;animation-duration:1.15s}
 
 /* ---------- motion: ambient ---------- */
