@@ -112,8 +112,8 @@
         answerText.textContent = chip.dataset.answer;
         answerLink.textContent = chip.dataset.linkLabel + ' →';
         answerLink.setAttribute('href', chip.dataset.link);
-        var target = document.querySelector(chip.dataset.link);
-        if(target){ target.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block:'start'}); }
+        // intentionally no auto-scroll — selecting a chip only updates the preview
+        // and the "Meet …" link; the visitor navigates by clicking that link.
       });
     });
   })();
