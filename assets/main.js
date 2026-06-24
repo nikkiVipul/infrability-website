@@ -6,6 +6,40 @@
   'use strict';
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---------- theme toggle (default light, persisted, visitor-controlled) ---------- */
+  (function(){
+    var root = document.documentElement;
+    var meta = document.querySelector('meta[name="theme-color"]');
+    var apply = function(theme){
+      if(theme === 'dark'){ root.setAttribute('data-theme','dark'); }
+      else { root.removeAttribute('data-theme'); theme = 'light'; }
+      if(meta){ meta.setAttribute('content', theme === 'dark' ? '#05070d' : '#f4f6fa'); }
+      if(btn){ btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+               btn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false'); }
+    };
+    // build the toggle button and place it in the nav, just before the CTA button
+    var nav = document.getElementById('nav');
+    var btn = null;
+    if(nav){
+      btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'theme-toggle';
+      btn.innerHTML =
+        '<svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/>'+
+        '<path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6 19 19M19 5l-1.4 1.4M6.4 17.6 5 19"/></svg>'+
+        '<svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.5A8.5 8.5 0 1 1 11.5 3a6.5 6.5 0 0 0 9.5 9.5z"/></svg>';
+      var cta = nav.querySelector('a.btn');
+      if(cta){ nav.insertBefore(btn, cta); } else { nav.appendChild(btn); }
+      btn.addEventListener('click', function(){
+        var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        apply(next);
+        try{ localStorage.setItem('theme', next); }catch(e){}
+      });
+    }
+    // sync button state/label with whatever the no-flash head script already applied
+    apply(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+  })();
+
   /* ---------- reveal on scroll ---------- */
   var revealEls = document.querySelectorAll('.rv');
   if(revealEls.length){
