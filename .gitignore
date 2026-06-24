@@ -1,0 +1,13 @@
+# Claude Code + session tooling
+.claude/
+.remember/
+
+# Temp / tooling artifacts
+.playwright-mcp/
+
+# Internal design docs (not part of the site)
+Infrability AI Website Redesign.pdf
+
+# Legacy reference pages (kept locally, not published)
+infrability (1).html
+ocrPage_Infrability.html
