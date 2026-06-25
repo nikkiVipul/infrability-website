@@ -411,11 +411,10 @@ section{padding:clamp(60px,7vw,110px) 0;position:relative}
 .arch-layer .lnodes{display:flex;flex-wrap:wrap;gap:8px}
 .arch-layer .lnodes span{font-family:'JetBrains Mono';font-size:.74rem;color:var(--ink-soft);
   background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:5px 10px}
-.arch-layer.core{background:
-    linear-gradient(var(--panel),var(--panel)) padding-box,
-    linear-gradient(110deg,rgba(var(--violet-rgb),.6),rgba(var(--azure-rgb),.55),rgba(var(--cyan-rgb),.5)) border-box;
-  border:1px solid transparent;box-shadow:var(--shadow),var(--elev)}
-.arch-layer.core .lnodes span{background:rgba(var(--azure-rgb),.1);border-color:rgba(var(--azure-rgb),.28)}
+.arch-layer.core{border-color:rgba(var(--azure-rgb),.28);
+  background:linear-gradient(105deg,rgba(var(--azure-rgb),.06),rgba(var(--cyan-rgb),.045)),var(--panel);
+  box-shadow:var(--shadow)}
+.arch-layer.core .lnodes span{background:rgba(var(--azure-rgb),.07);border-color:rgba(var(--azure-rgb),.18)}
 .arch-note{margin-top:22px;color:var(--muted);font-size:.95rem;max-width:72ch}
 
 /* ---------- intelligence-layer hero mark ---------- */
