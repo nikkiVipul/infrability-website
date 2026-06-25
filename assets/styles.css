@@ -227,7 +227,7 @@ section{padding:clamp(60px,7vw,110px) 0;position:relative}
 }
 
 /* ---------- orb stage (reuses .ringz/.disc/.mark from .il-visual) ---------- */
-.orb-stage{position:relative;aspect-ratio:1;display:grid;place-items:center;width:100%;max-width:480px;
+.orb-stage{position:relative;aspect-ratio:1;display:grid;place-items:center;width:100%;max-width:540px;
   margin-inline:auto;animation:orbFloat 8s ease-in-out infinite;
   background-image:var(--orb-img),radial-gradient(circle closest-side at 50% 50%,rgba(var(--cyan-rgb),.34),rgba(var(--violet-rgb),.18) 44%,transparent 100%);
   background-size:86%,100% 100%;background-position:center,center;background-repeat:no-repeat,no-repeat}
