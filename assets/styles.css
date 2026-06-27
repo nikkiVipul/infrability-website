@@ -500,6 +500,15 @@ section{padding:clamp(60px,7vw,110px) 0;position:relative}
   animation:breathe 6s ease-in-out infinite}
 @keyframes breathe{50%{box-shadow:0 28px 72px -20px rgba(var(--cyan-rgb),.5), inset 0 3px 12px rgba(255,255,255,.8)}}
 .il-visual .mark{position:relative;z-index:2;width:43%}
+.il-pair{display:flex;align-items:center;justify-content:center;gap:26px;margin:0 auto 30px;flex-wrap:wrap}
+.il-pair .il-visual{flex:0 0 auto}
+.il-mark-disc{flex:0 0 auto;width:150px;height:150px;border-radius:50%;display:grid;place-items:center;
+  background:radial-gradient(circle at 38% 30%, #ffffff, #fbe2ee 58%, #f3c8dd 100%);
+  border:1px solid rgba(193,39,107,.18);
+  box-shadow:0 24px 60px -22px rgba(193,39,107,.42), inset 0 3px 12px rgba(255,255,255,.85)}
+.il-mark-disc img{width:52%}
+.il-join{flex:0 0 auto;font-family:'Space Grotesk';font-weight:300;font-size:1.8rem;color:var(--muted-2);line-height:1}
+@media(max-width:480px){.il-mark-disc{width:118px;height:118px}.il-pair .il-visual{width:150px!important}.il-join{font-size:1.4rem}}
 
 /* ---------- platform mini cards ---------- */
 .mini-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);
