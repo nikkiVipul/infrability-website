@@ -4,6 +4,17 @@
 root * /srv
 encode gzip zstd
 
+# Always revalidate the page shell and its code. Without this, browsers
+# heuristically cache styles.css/main.js and can pair freshly-deployed HTML
+# with a stale stylesheet — which renders the new markup unstyled. ETag/
+# Last-Modified make these revalidations cheap 304s.
+@dynamic path / *.html *.css *.js *.json *.xml *.txt
+header @dynamic Cache-Control "no-cache"
+
+# Media changes rarely; let it cache for a week.
+@static path *.png *.jpg *.jpeg *.gif *.svg *.webp *.avif *.woff *.woff2 *.ttf *.ico
+header @static Cache-Control "public, max-age=604800"
+
 # serve /foo and /foo.html and directories
 try_files {path} {path}.html {path}/
 file_server
