@@ -84,7 +84,7 @@
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:84px;font-size:17px}
+html{scroll-behavior:smooth;scroll-padding-top:92px;font-size:17px}
 body{
   background:var(--bg);color:var(--ink);
   font-family:'Inter',system-ui,sans-serif;line-height:1.6;
@@ -170,7 +170,7 @@ h2{font-family:'Space Grotesk';font-weight:500;letter-spacing:-.03em;
   font-size:clamp(1.95rem,4vw,3.05rem);line-height:1.08;margin:16px 0;color:var(--head)}
 .lede{color:var(--muted);font-size:1.05rem;max-width:60ch}
 .gradtext{background:var(--grad-3);-webkit-background-clip:text;background-clip:text;color:transparent}
-section{padding:clamp(60px,7vw,110px) 0;position:relative}
+section{padding-top:clamp(28px,3vw,44px);padding-bottom:clamp(60px,7vw,104px);position:relative}
 .section-head{max-width:780px;margin-bottom:48px}
 .section-head .lede{margin-top:14px}
 .offer-divider{padding-top:clamp(30px,5vw,56px);padding-bottom:6px;display:flex;flex-direction:column;gap:10px}
