@@ -506,7 +506,7 @@ section{padding:clamp(60px,7vw,110px) 0;position:relative}
   background:radial-gradient(circle at 38% 30%, #ffffff, #fbe2ee 58%, #f3c8dd 100%);
   border:1px solid rgba(193,39,107,.18);
   box-shadow:0 24px 60px -22px rgba(193,39,107,.42), inset 0 3px 12px rgba(255,255,255,.85)}
-.il-mark-disc img{width:52%}
+.il-mark-disc img{width:52%;mix-blend-mode:multiply}
 .il-join{flex:0 0 auto;font-family:'Space Grotesk';font-weight:300;font-size:1.8rem;color:var(--muted-2);line-height:1}
 @media(max-width:480px){.il-mark-disc{width:118px;height:118px}.il-pair .il-visual{width:150px!important}.il-join{font-size:1.4rem}}
 
