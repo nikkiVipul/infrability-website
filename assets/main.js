@@ -131,16 +131,19 @@
       if(form.querySelector('[name="_gotcha"]').value) return; // bot trap
       var ok = true;
       form.querySelectorAll('[required]').forEach(function(f){
-        var valid = f.value.trim() && (f.type !== 'email' || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.value));
+        var valid = !!f.value.trim();
+        if(valid && f.type === 'email') valid = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.value);
+        if(valid && f.type === 'tel') valid = /^[+]?[\d\s().-]{7,}$/.test(f.value);
         f.closest('.field').classList.toggle('error', !valid);
         if(!valid) ok = false;
       });
-      if(!ok){ setStatus('Please complete the required fields with a valid email.', 'err'); return; }
+      if(!ok){ setStatus('Please complete the required fields with a valid email and phone number.', 'err'); return; }
       var data = new FormData(form);
       var action = form.getAttribute('action');
       if(action.indexOf('YOUR_FORM_ID') !== -1){
         // form service not configured yet — fall back to email
         var body = 'Name: ' + data.get('name') + '\nEmail: ' + data.get('email') +
+          '\nPhone: ' + (data.get('phone') || '—') +
           '\nCompany: ' + (data.get('company') || '—') + '\nTopic: ' + (data.get('topic') || '—') +
           '\n\n' + (data.get('message') || '');
         window.location.href = 'mailto:info@infrability.com?subject=' +
